@@ -1,0 +1,19 @@
+use members_st10442843
+
+use members_st10442843
+
+
+q.4.2
+
+db.members.insertOne({MemberName: "Debbie", MemberSurname:"Theart", MemberDOB: "1980-03-17"})
+
+db.members.insertOne({MemberName: "Thomas", MemberSurname:"Duncan", MemberDOB: "1976-08-12"})
+
+Q.4.3
+
+db.members.find()
+
+Q.4.4
+db.members.find(
+  { MemberDOB: { $gt: "1979-01-12" } }
+);

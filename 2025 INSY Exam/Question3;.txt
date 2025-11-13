@@ -1,0 +1,103 @@
+Create database 2025INSYEXAM;
+
+use 2025INSYEXAM;
+
+-- Q 3.1 --
+
+create table Patient(
+PatientID INT,
+PatientName CHar(50),
+PatientSurname char (50),
+PatientDOB DATE
+)
+
+-- Q.3.2--
+
+create table Doctor (
+DoctorID int,
+DoctorName char(50),
+DoctorSurname char(50)
+
+)
+
+-- Q.3.3--
+
+create table Appointment(
+AppointmentID int,
+PatientID int,
+DoctorID int,
+AppointmentDate Date,
+AppointmentTime time,
+AppointmentDuration int
+
+
+)
+
+
+-- Q.3.4--
+
+insert into patient 
+values( 1 , "Debbie" ,  "Theart" , "1980-03-07"),
+( 2 , "Thomas" ,  "Duncan" , "1976-08-12");
+
+insert into doctor
+values( 1 , "zintle" ,  "Nukani"),
+( 2 , "Ravi" ,  "Maharaj");
+
+
+
+select * from doctor;
+
+Insert into appointment
+values
+( 1 , 1, 2, "2025-01-15", "09:00:00", 15),
+( 2, 2, 2, "2025-01-18", "15:00:00", 30 ),
+(  3, 1, 1, "2025-01-20", "10:00:00", 15),
+( 4, 1, 2, "2025-01-21", "11:00:00", 15 )
+
+select * from appointment
+
+-- Q3.6---
+SELECT 
+    p.PatientName,
+    p.PatientSurname,
+    COUNT(a.AppointmentID) AS TotalAppointments
+FROM 
+    patient p
+JOIN 
+    appointment a 
+ON 
+    p.PatientID = a.PatientID
+GROUP BY 
+    p.PatientName, p.PatientSurname
+ORDER BY 
+    TotalAppointments DESC;
+
+
+
+-- Q3.7--
+
+
+CREATE VIEW Doctor2Patients AS
+SELECT 
+    p.PatientName,
+    p.PatientSurname
+FROM 
+    patient p
+JOIN 
+    appointment a 
+    ON p.PatientID = a.PatientID
+WHERE 
+    a.DoctorID = 2
+ORDER BY 
+    p.PatientSurname ASC;
+
+
+
+
+
+SELECT * FROM Doctor2Patients;
+
+
+
+
